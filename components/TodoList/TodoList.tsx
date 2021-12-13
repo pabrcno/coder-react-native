@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "flex-start",
+
     alignItems: "center",
     height: "100%",
     backgroundColor: "#F5FCFF",
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   todoInput: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between",
+
     alignItems: "center",
     width: "80%",
     backgroundColor: "#F5FCFF",
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   todoList: {
     flex: 1,
     flexDirection: "column",
-    width: "80%",
+    width: "90%",
     backgroundColor: "#F5FCFF",
   },
 });

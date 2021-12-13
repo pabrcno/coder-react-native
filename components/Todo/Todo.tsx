@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     backgroundColor: "#F5FCFF",
+    marginBottom: 20,
   },
   todoText: {
     fontSize: 20,
