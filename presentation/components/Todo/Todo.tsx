@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TodoType from "./../../types/todo";
+import TodoType from "../../../domain/types/todo";
 import { View, Text, Button } from "react-native";
 import { StyleSheet } from "react-native";
 interface IProps {

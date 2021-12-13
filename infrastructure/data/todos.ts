@@ -1,4 +1,4 @@
-import TodoType from "../types/todo";
+import TodoType from "../../domain/types/todo";
 
 const todos: TodoType[] = [
   {

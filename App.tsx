@@ -1,8 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import todos from "./data/todos";
-import TodoList from "./components/TodoList";
+import React, { useState } from "react";
+import todos from "./infrastructure/data/todos";
+import TodoList from "./presentation/components/TodoList";
+import StartScreen from "./presentation/StartScreen";
+import { SafeAreaView, Text, View } from "react-native";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 
 export default function App() {
-  return <TodoList />;
+  const [loaded] = useFonts({ VCR: require("./assets/fonts/VCR.ttf") });
+
+  return <>{loaded ? <StartScreen /> : <AppLoading />}</>;
 }

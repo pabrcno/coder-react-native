@@ -8,7 +8,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import TodoType from "../../types/todo";
+import TodoType from "../../../domain/types/todo";
 import Todo from "../Todo";
 
 // TodoList component
