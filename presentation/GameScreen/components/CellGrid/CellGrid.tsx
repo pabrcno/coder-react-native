@@ -6,12 +6,14 @@ import {
   View,
   StyleSheet,
   ScrollView,
+  TouchableWithoutFeedbackBase,
+  TouchableWithoutFeedback,
 } from "react-native";
 import styled from "styled-components/native";
 import { Row } from "react-native-easy-grid";
 
-const numRows = 26;
-const numCols = 18;
+const numRows = 25;
+const numCols = 16;
 
 const operations = [
   [0, 1],
@@ -89,7 +91,7 @@ const CellGrid = () => {
         {grid.map((rows, i) => (
           <Row key={`${i}`}>
             {rows.map((col, k) => (
-              <TouchableOpacity
+              <TouchableWithoutFeedback
                 key={`${i}-${k}`}
                 onPress={() => {
                   const newGrid = produce(grid, (gridCopy) => {
@@ -107,7 +109,7 @@ const CellGrid = () => {
                     backgroundColor: grid[i][k] ? "black" : "white",
                   }}
                 />
-              </TouchableOpacity>
+              </TouchableWithoutFeedback>
             ))}
           </Row>
         ))}
@@ -165,7 +167,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
 
-    backgroundColor: "#202020",
+    backgroundColor: "white",
   },
   text: {
     fontFamily: "VCR",
