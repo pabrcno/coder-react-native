@@ -8,9 +8,10 @@ import {
   ScrollView,
 } from "react-native";
 import styled from "styled-components/native";
+import { Row } from "react-native-easy-grid";
 
-const numRows = 50;
-const numCols = 50;
+const numRows = 15;
+const numCols = 10;
 
 const operations = [
   [0, 1],
@@ -79,17 +80,6 @@ const CellGrid = () => {
     <ScrollView>
       <TouchableOpacity
         onPress={() => {
-          setRunning(!running);
-          if (!running) {
-            runningRef.current = true;
-            runSimulation();
-          }
-        }}
-      >
-        <Text>{running ? "stop" : "start"}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
           const rows = [];
           for (let i = 0; i < numRows; i++) {
             rows.push(
@@ -110,38 +100,51 @@ const CellGrid = () => {
         <Text>clear</Text>
       </TouchableOpacity>
       <StyledGrid style={styles.grid}>
-        {grid.map((rows, i) =>
-          rows.map((col, k) => (
-            <TouchableOpacity
-              key={`${i}-${k}`}
-              onPress={() => {
-                const newGrid = produce(grid, (gridCopy) => {
-                  gridCopy[i][k] = grid[i][k] ? 0 : 1;
-                });
-                setGrid(newGrid);
-              }}
-            >
-              <View
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderWidth: 1,
-                  borderColor: "black",
-                  backgroundColor: grid[i][k] ? "green" : "white",
+        {grid.map((rows, i) => (
+          <Row key={`${i}`}>
+            {rows.map((col, k) => (
+              <TouchableOpacity
+                key={`${i}-${k}`}
+                onPress={() => {
+                  const newGrid = produce(grid, (gridCopy) => {
+                    console.log("gridCopy");
+                    gridCopy[i][k] = grid[i][k] ? 0 : 1;
+                  });
+                  setGrid(newGrid);
                 }}
-              />
-            </TouchableOpacity>
-          ))
-        )}
+              >
+                <View
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderWidth: 1,
+                    borderColor: "black",
+                    backgroundColor: grid[i][k] ? "black" : "white",
+                  }}
+                />
+              </TouchableOpacity>
+            ))}
+          </Row>
+        ))}
       </StyledGrid>
+      <TouchableOpacity
+        onPress={() => {
+          setRunning(!running);
+          if (!running) {
+            runningRef.current = true;
+            runSimulation();
+          }
+        }}
+      >
+        <Text>{running ? "stop" : "start"}</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   grid: {
-    flex: 10,
-    flexDirection: "row",
+    flex: 1,
   },
 });
 export default CellGrid;
