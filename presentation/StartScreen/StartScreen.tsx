@@ -21,7 +21,7 @@ const StyledButton = styled.TouchableOpacity`
   border-radius: 2px;
   align-items: center;
   justify-content: center;
-  width: 300;
+  width: 300px;
 `;
 
 const StyledFootDecoration = styled.View`

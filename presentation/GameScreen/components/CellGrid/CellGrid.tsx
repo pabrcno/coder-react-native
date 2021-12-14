@@ -25,7 +25,14 @@ const operations = [
 ];
 
 const StyledGrid = styled.View``;
-
+const StyledButton = styled.TouchableOpacity`
+  background-color: #202020;
+  padding: 20px;
+  border-radius: 2px;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+`;
 const generateEmptyGrid = () => {
   const rows = [];
   for (let i = 0; i < numRows; i++) {
@@ -78,27 +85,6 @@ const CellGrid = () => {
 
   return (
     <ScrollView>
-      <TouchableOpacity
-        onPress={() => {
-          const rows = [];
-          for (let i = 0; i < numRows; i++) {
-            rows.push(
-              Array.from(Array(numCols), () => (Math.random() > 0.7 ? 1 : 0))
-            );
-          }
-
-          setGrid(rows);
-        }}
-      >
-        <Text>random</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          setGrid(generateEmptyGrid());
-        }}
-      >
-        <Text>clear</Text>
-      </TouchableOpacity>
       <StyledGrid style={styles.grid}>
         {grid.map((rows, i) => (
           <Row key={`${i}`}>
@@ -127,17 +113,48 @@ const CellGrid = () => {
           </Row>
         ))}
       </StyledGrid>
-      <TouchableOpacity
-        onPress={() => {
-          setRunning(!running);
-          if (!running) {
-            runningRef.current = true;
-            runSimulation();
-          }
+      <View
+        style={{
+          marginTop: 20,
+          flex: 1,
+          flexDirection: "row",
+          justifyContent: "space-around",
         }}
       >
-        <Text>{running ? "stop" : "start"}</Text>
-      </TouchableOpacity>
+        <StyledButton
+          onPress={() => {
+            setRunning(!running);
+            if (!running) {
+              runningRef.current = true;
+              runSimulation();
+            }
+          }}
+        >
+          <Text style={styles.text}>{running ? "STOP" : "START"}</Text>
+        </StyledButton>
+
+        <StyledButton
+          onPress={() => {
+            const rows = [];
+            for (let i = 0; i < numRows; i++) {
+              rows.push(
+                Array.from(Array(numCols), () => (Math.random() > 0.7 ? 1 : 0))
+              );
+            }
+
+            setGrid(rows);
+          }}
+        >
+          <Text style={styles.text}>Random</Text>
+        </StyledButton>
+        <StyledButton
+          onPress={() => {
+            setGrid(generateEmptyGrid());
+          }}
+        >
+          <Text style={styles.text}>Clear</Text>
+        </StyledButton>
+      </View>
     </ScrollView>
   );
 };
@@ -145,6 +162,11 @@ const CellGrid = () => {
 const styles = StyleSheet.create({
   grid: {
     flex: 1,
+  },
+  text: {
+    fontFamily: "VCR",
+    color: "#fff",
+    fontSize: 20,
   },
 });
 export default CellGrid;
