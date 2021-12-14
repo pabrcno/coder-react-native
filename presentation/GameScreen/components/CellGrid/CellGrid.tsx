@@ -10,7 +10,7 @@ import {
 import styled from "styled-components/native";
 import { Row } from "react-native-easy-grid";
 
-const numRows = 15;
+const numRows = 18;
 const numCols = 10;
 
 const operations = [
@@ -80,7 +80,7 @@ const CellGrid = () => {
       });
     });
 
-    setTimeout(runSimulation, 100);
+    setTimeout(runSimulation, 150);
   }, []);
 
   return (
@@ -101,8 +101,8 @@ const CellGrid = () => {
               >
                 <View
                   style={{
-                    width: 40,
-                    height: 40,
+                    width: 35,
+                    height: 35,
                     borderWidth: 1,
                     borderColor: "black",
                     backgroundColor: grid[i][k] ? "black" : "white",
@@ -115,10 +115,11 @@ const CellGrid = () => {
       </StyledGrid>
       <View
         style={{
-          marginTop: 20,
           flex: 1,
           flexDirection: "row",
           justifyContent: "space-around",
+          backgroundColor: "#202020",
+          paddingBottom: 80,
         }}
       >
         <StyledButton
@@ -162,6 +163,10 @@ const CellGrid = () => {
 const styles = StyleSheet.create({
   grid: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+
+    backgroundColor: "#202020",
   },
   text: {
     fontFamily: "VCR",
