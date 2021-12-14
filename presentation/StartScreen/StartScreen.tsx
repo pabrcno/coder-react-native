@@ -64,13 +64,6 @@ const StartScreen = () => {
           <Text style={style.text}>ABOUT</Text>
         </StyledButton>
       </View>
-      <StyledFootDecoration>
-        <Image source={require(`../../assets/images/d4.png`)} />
-        <Image source={require(`../../assets/images/d1.png`)} />
-        <Image source={require(`../../assets/images/d2.png`)} />
-        <Image source={require(`../../assets/images/d3.png`)} />
-        <Image source={require(`../../assets/images/d4.png`)} />
-      </StyledFootDecoration>
     </StyledContainer>
   );
 };
