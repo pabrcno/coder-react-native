@@ -4,7 +4,6 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   Dimensions,
   ImageBackground,
 } from "react-native";
@@ -85,7 +84,11 @@ const StartScreen = () => {
           <StyledButton onPress={() => {}}>
             <Text style={style.text}>CHALLENGES</Text>
           </StyledButton>
-          <StyledButton onPress={() => {}}>
+          <StyledButton
+            onPress={() => {
+              navigation.navigate("About");
+            }}
+          >
             <Text style={style.text}>ABOUT</Text>
           </StyledButton>
         </View>

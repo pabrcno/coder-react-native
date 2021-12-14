@@ -12,6 +12,7 @@ import StartScreen from "./presentation/StartScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import RootStackParamList from "./domain/types/navigation";
+import AboutScreen from "./presentation/AboutScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const fontConfig = {
@@ -91,6 +92,11 @@ export default function App() {
               name="Game"
               component={GameScreen}
               options={{ title: "Conway's Game of Life", headerShown: false }}
+            />
+            <Stack.Screen
+              name="About"
+              component={AboutScreen}
+              options={{ title: "About", headerShown: false }}
             />
           </Stack.Navigator>
         </NavigationContainer>
