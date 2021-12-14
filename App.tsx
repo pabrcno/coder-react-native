@@ -9,7 +9,11 @@ import {
   Provider as PaperProvider,
 } from "react-native-paper";
 import StartScreen from "./presentation/StartScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import RootStackParamList from "./domain/types/navigation";
 
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const fontConfig = {
   web: {
     regular: {
@@ -75,7 +79,24 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      {loaded ? <GameScreen /> : <AppLoading />}
+      {loaded ? (
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Home"
+              component={StartScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Game"
+              component={GameScreen}
+              options={{ title: "Conway's Game of Life", headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      ) : (
+        <AppLoading />
+      )}
     </PaperProvider>
   );
 }

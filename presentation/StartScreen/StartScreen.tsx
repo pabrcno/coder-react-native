@@ -1,6 +1,9 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
 import styled from "styled-components/native";
+import RootStackParamList from "../../domain/types/navigation";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const StyledContainer = styled.SafeAreaView`
   flex: 1;
@@ -32,11 +35,12 @@ const StyledFootDecoration = styled.View`
   flex-direction: row;
   flex: 1;
 `;
-
+type homeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
 const StartScreen = () => {
   const dimensions = Dimensions.get("window");
   const imageHeight = Math.round((dimensions.width * 9) / 35);
   const imageWidth = dimensions.width / 1;
+  const navigation = useNavigation<homeScreenProp>();
   //sorry for the hardcoded values, but it does't let me require the images dynamically
   const decorationIterator = ["d1.png", "d2.png", "d3.png", "d4.png", "d5.png"];
   return (
@@ -48,7 +52,12 @@ const StartScreen = () => {
         />
       </StyledLogoContainer>
       <View>
-        <StyledButton onPress={() => {}}>
+        <StyledButton
+          onPress={() => {
+            //navigate to game screen
+            navigation.navigate("Game");
+          }}
+        >
           <Text style={style.text}>PLAY!</Text>
         </StyledButton>
         <StyledButton onPress={() => {}}>
