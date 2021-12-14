@@ -6,7 +6,7 @@ const GameScreen = () => {
   const _goBack = () => console.log("Went back");
   return (
     <SafeAreaView>
-      <Appbar.Header style={{ backgroundColor: "black" }}>
+      <Appbar.Header style={{ backgroundColor: "#202020" }}>
         <Appbar.BackAction onPress={_goBack} />
         <Appbar.Content title="Conway's Game of Life" />
       </Appbar.Header>

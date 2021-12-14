@@ -10,8 +10,8 @@ import {
 import styled from "styled-components/native";
 import { Row } from "react-native-easy-grid";
 
-const numRows = 18;
-const numCols = 10;
+const numRows = 26;
+const numCols = 18;
 
 const operations = [
   [0, 1],
@@ -100,9 +100,9 @@ const CellGrid = () => {
               >
                 <View
                   style={{
-                    width: 35,
-                    height: 35,
-                    borderWidth: 1,
+                    width: 24,
+                    height: 24,
+                    borderWidth: 0.5,
                     borderColor: "black",
                     backgroundColor: grid[i][k] ? "black" : "white",
                   }}
