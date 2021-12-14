@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  SafeAreaView,
-  Dimensions,
-} from "react-native";
+import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
 import styled from "styled-components/native";
 
 const StyledContainer = styled.SafeAreaView`
