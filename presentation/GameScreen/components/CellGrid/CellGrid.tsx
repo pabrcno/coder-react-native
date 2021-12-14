@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef } from "react";
 import produce from "immer";
-import { ScrollView } from "react-native";
+import { ScrollView, View, Text } from "react-native";
 import styled from "styled-components/native";
 import { Row } from "react-native-easy-grid";
 import Cell from "../Cell";
@@ -14,8 +14,20 @@ const StyledGrid = styled.View`
   align-items: center;
   background-color: white;
 `;
+const StyledGenerationsContainer = styled.View`
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: #202020;
+`;
+const StyledGenerationsText = styled.Text`
+  color: white;
+  font-size: 20px;
+  font-family: "VCR";
+`;
 
 const CellGrid = () => {
+  const [generations, setGenerations] = useState(0);
   const [grid, setGrid] = useState(() => {
     return generateEmptyGrid();
   });
@@ -28,6 +40,7 @@ const CellGrid = () => {
       return;
     }
     setGrid(gameLogic);
+    setGenerations((g) => g + 1);
     setTimeout(runSimulation, 150);
   }, []);
 
@@ -64,6 +77,11 @@ const CellGrid = () => {
         running={running}
         setGrid={setGrid}
       />
+      <StyledGenerationsContainer>
+        <StyledGenerationsText>
+          Generations: {generations}
+        </StyledGenerationsText>
+      </StyledGenerationsContainer>
     </ScrollView>
   );
 };

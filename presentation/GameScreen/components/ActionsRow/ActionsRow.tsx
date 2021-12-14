@@ -16,7 +16,7 @@ const StyledButton = styled.TouchableOpacity`
 const StyledActionRow = styled.View`
   flex-direction: row;
   justify-content: space-around;
-  padding-bottom: 80px;
+
   background-color: #202020;
 `;
 
