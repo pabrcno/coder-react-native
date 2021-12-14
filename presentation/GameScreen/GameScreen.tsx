@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, Text } from "react-native";
-import CellGrid from "./components/CellGrid/CellGrid";
+import CellGrid from "./components/CellGrid";
 import { Appbar } from "react-native-paper";
 import RootStackParamList from "../../domain/types/navigation";
 import { StackNavigationProp } from "@react-navigation/stack";

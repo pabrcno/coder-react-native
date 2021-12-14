@@ -13,6 +13,21 @@ const StyledButton = styled.TouchableOpacity`
   width: 120px;
 `;
 
+const StyledActionRow = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  padding-bottom: 80px;
+  background-color: #202020;
+`;
+
+const styles = StyleSheet.create({
+  text: {
+    fontFamily: "VCR",
+    color: "#fff",
+    fontSize: 20,
+  },
+});
+
 interface IProps {
   toggleRunning: () => void;
   running: boolean;
@@ -20,15 +35,7 @@ interface IProps {
 }
 export const ActionsRow = ({ toggleRunning, running, setGrid }: IProps) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-around",
-        backgroundColor: "#202020",
-        paddingBottom: 80,
-      }}
-    >
+    <StyledActionRow>
       <StyledButton onPress={toggleRunning}>
         <Text style={styles.text}>{running ? "STOP" : "START"}</Text>
       </StyledButton>
@@ -54,15 +61,8 @@ export const ActionsRow = ({ toggleRunning, running, setGrid }: IProps) => {
       >
         <Text style={styles.text}>Clear</Text>
       </StyledButton>
-    </View>
+    </StyledActionRow>
   );
 };
-const styles = StyleSheet.create({
-  text: {
-    fontFamily: "VCR",
-    color: "#fff",
-    fontSize: 20,
-  },
-});
 
 export default ActionsRow;
