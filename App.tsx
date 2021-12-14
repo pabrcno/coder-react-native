@@ -8,6 +8,7 @@ import {
   DefaultTheme,
   Provider as PaperProvider,
 } from "react-native-paper";
+import StartScreen from "./presentation/StartScreen";
 
 const fontConfig = {
   web: {

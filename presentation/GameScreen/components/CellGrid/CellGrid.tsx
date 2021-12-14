@@ -93,7 +93,6 @@ const CellGrid = () => {
                 key={`${i}-${k}`}
                 onPress={() => {
                   const newGrid = produce(grid, (gridCopy) => {
-                    console.log("gridCopy");
                     gridCopy[i][k] = grid[i][k] ? 0 : 1;
                   });
                   setGrid(newGrid);
@@ -139,7 +138,7 @@ const CellGrid = () => {
             const rows = [];
             for (let i = 0; i < numRows; i++) {
               rows.push(
-                Array.from(Array(numCols), () => (Math.random() > 0.7 ? 1 : 0))
+                Array.from(Array(numCols), () => (Math.random() > 0.5 ? 1 : 0))
               );
             }
 
