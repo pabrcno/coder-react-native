@@ -1,6 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  ImageBackground,
+} from "react-native";
 import styled from "styled-components/native";
 import RootStackParamList from "../../domain/types/navigation";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -27,52 +34,64 @@ const StyledButton = styled.TouchableOpacity`
   width: 300px;
 `;
 
-const StyledFootDecoration = styled.View`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  flex-direction: row;
-  flex: 1;
-`;
-type homeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
-const StartScreen = () => {
-  const dimensions = Dimensions.get("window");
-  const imageHeight = Math.round((dimensions.width * 9) / 35);
-  const imageWidth = dimensions.width / 1;
-  const navigation = useNavigation<homeScreenProp>();
-  //sorry for the hardcoded values, but it does't let me require the images dynamically
-  const decorationIterator = ["d1.png", "d2.png", "d3.png", "d4.png", "d5.png"];
-  return (
-    <StyledContainer>
-      <StyledLogoContainer>
-        <StyledLogo
-          source={require("../../assets/logo.png")}
-          style={{ height: imageHeight, width: imageWidth }}
-        />
-      </StyledLogoContainer>
-      <View>
-        <StyledButton
-          onPress={() => {
-            //navigate to game screen
-            navigation.navigate("Game");
-          }}
-        >
-          <Text style={style.text}>PLAY!</Text>
-        </StyledButton>
-        <StyledButton onPress={() => {}}>
-          <Text style={style.text}>ABOUT</Text>
-        </StyledButton>
-      </View>
-    </StyledContainer>
-  );
-};
-
 const style = StyleSheet.create({
   text: {
     fontFamily: "VCR",
     color: "#fff",
     fontSize: 30,
   },
+  background: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
+type homeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
+const StartScreen = () => {
+  const dimensions = Dimensions.get("window");
+  const imageHeight = Math.round((dimensions.width * 9) / 32);
+  const imageWidth = dimensions.width / 0.9;
+  const navigation = useNavigation<homeScreenProp>();
+
+  return (
+    <StyledContainer>
+      <ImageBackground
+        source={require("../../assets/background.png")}
+        resizeMode="cover"
+        style={{
+          ...style.background,
+          width: dimensions.width,
+          height: dimensions.height,
+        }}
+      >
+        <StyledLogoContainer>
+          <StyledLogo
+            source={require("../../assets/logo.png")}
+            style={{ height: imageHeight, width: imageWidth }}
+          />
+        </StyledLogoContainer>
+        <View>
+          <StyledButton
+            onPress={() => {
+              //navigate to game screen
+              navigation.navigate("Game");
+            }}
+          >
+            <Text style={style.text}>PLAY!</Text>
+          </StyledButton>
+          <StyledButton onPress={() => {}}>
+            <Text style={style.text}>PROFILE</Text>
+          </StyledButton>
+          <StyledButton onPress={() => {}}>
+            <Text style={style.text}>CHALLENGES</Text>
+          </StyledButton>
+          <StyledButton onPress={() => {}}>
+            <Text style={style.text}>ABOUT</Text>
+          </StyledButton>
+        </View>
+      </ImageBackground>
+    </StyledContainer>
+  );
+};
+
 export default StartScreen;
