@@ -1,8 +1,8 @@
 // task todo model
 
-type TodoType = {
+type ChallengeType = {
   id: number;
   title: string;
   completed: boolean;
 };
-export default TodoType;
+export default ChallengeType;

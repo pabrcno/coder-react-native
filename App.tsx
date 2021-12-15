@@ -13,6 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import RootStackParamList from "./domain/types/navigation";
 import AboutScreen from "./presentation/AboutScreen";
+import ChallengesScreen from "./presentation/ChallengesScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const fontConfig = {
@@ -97,6 +98,11 @@ export default function App() {
               name="About"
               component={AboutScreen}
               options={{ title: "About", headerShown: false }}
+            />
+            <Stack.Screen
+              name="Challenges"
+              component={ChallengesScreen}
+              options={{ title: "Challenges", headerShown: false }}
             />
           </Stack.Navigator>
         </NavigationContainer>

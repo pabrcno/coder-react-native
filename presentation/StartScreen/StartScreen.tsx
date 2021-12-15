@@ -81,7 +81,11 @@ const StartScreen = () => {
           <StyledButton onPress={() => {}}>
             <Text style={style.text}>PROFILE</Text>
           </StyledButton>
-          <StyledButton onPress={() => {}}>
+          <StyledButton
+            onPress={() => {
+              navigation.navigate("Challenges");
+            }}
+          >
             <Text style={style.text}>CHALLENGES</Text>
           </StyledButton>
           <StyledButton
