@@ -9,7 +9,7 @@ type gameScreenProp = StackNavigationProp<RootStackParamList, "Game">;
 
 const GameScreen = () => {
   const navigation = useNavigation<gameScreenProp>();
-  const _goBack = () => console.log("Went back");
+
   return (
     <SafeAreaView>
       <Appbar.Header style={{ backgroundColor: "white" }}>
