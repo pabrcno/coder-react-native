@@ -6,11 +6,10 @@ import { StyleSheet } from "react-native";
 interface IProps {
   challenge: ChallengeType;
   onDelete: (id: number) => void;
+  setCompleted: () => void;
 }
 
-const Challenge = ({ challenge, onDelete }: IProps) => {
-  const [completed, setCompleted] = useState(challenge.completed);
-
+const Challenge = ({ challenge, onDelete, setCompleted }: IProps) => {
   return (
     <View style={styles.challenge}>
       <TouchableOpacity
@@ -23,12 +22,9 @@ const Challenge = ({ challenge, onDelete }: IProps) => {
       <View style={{ flex: 1 }}>
         <Text style={styles.challengeText}>{challenge.title}</Text>
       </View>
-      <TouchableOpacity
-        onPress={() => setCompleted(!completed)}
-        style={styles.toggleButton}
-      >
+      <TouchableOpacity onPress={setCompleted} style={styles.toggleButton}>
         <Text style={styles.toggleText}>
-          {completed ? "Completed" : "TODO"}
+          {challenge.completed ? "Completed" : "TODO"}
         </Text>
       </TouchableOpacity>
     </View>

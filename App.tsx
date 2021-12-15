@@ -14,6 +14,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import RootStackParamList from "./domain/types/navigation";
 import AboutScreen from "./presentation/AboutScreen";
 import ChallengesScreen from "./presentation/ChallengesScreen";
+import { Provider } from "react-redux";
+import { store } from "./application/redux/store";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const fontConfig = {
@@ -80,35 +82,37 @@ export default function App() {
   const [loaded] = useFonts({ VCR: require("./assets/fonts/VCR.ttf") });
 
   return (
-    <PaperProvider theme={theme}>
-      {loaded ? (
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Home"
-              component={StartScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Game"
-              component={GameScreen}
-              options={{ title: "Conway's Game of Life", headerShown: false }}
-            />
-            <Stack.Screen
-              name="About"
-              component={AboutScreen}
-              options={{ title: "About", headerShown: false }}
-            />
-            <Stack.Screen
-              name="Challenges"
-              component={ChallengesScreen}
-              options={{ title: "Challenges", headerShown: false }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      ) : (
-        <AppLoading />
-      )}
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider theme={theme}>
+        {loaded ? (
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Home"
+                component={StartScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Game"
+                component={GameScreen}
+                options={{ title: "Conway's Game of Life", headerShown: false }}
+              />
+              <Stack.Screen
+                name="About"
+                component={AboutScreen}
+                options={{ title: "About", headerShown: false }}
+              />
+              <Stack.Screen
+                name="Challenges"
+                component={ChallengesScreen}
+                options={{ title: "Challenges", headerShown: false }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        ) : (
+          <AppLoading />
+        )}
+      </PaperProvider>
+    </Provider>
   );
 }

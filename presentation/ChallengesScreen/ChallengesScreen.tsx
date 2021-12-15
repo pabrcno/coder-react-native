@@ -3,13 +3,19 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { View, Text, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { Appbar, TextInput } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/native";
+import { RootState } from "../../application/redux/store";
 import ChallengeType from "../../domain/types/challenge";
 import RootStackParamList from "../../domain/types/navigation";
 import baseChallenges from "../../infrastructure/data/challenges";
 import Challenge from "./components/Challenge";
 import ChallengeList from "./components/ChallengeList";
-
+import {
+  addItem,
+  removeItem,
+  toggleItem,
+} from "../../application/redux/features/challenges";
 type challengesScreenProp = StackNavigationProp<
   RootStackParamList,
   "Challenges"
@@ -25,13 +31,15 @@ const StyledButton = styled.TouchableOpacity`
 `;
 const ChallengesScreen = () => {
   const navigation = useNavigation<challengesScreenProp>();
+  const dispatch = useDispatch();
+
   const _goBack = () => console.log("Went back");
-  const [challenges, setChallenges] = React.useState<ChallengeType[]>([
-    ...baseChallenges,
-  ]);
+  const challenges = useSelector(
+    (state: RootState) => state.challenges.challenges
+  );
   const [challengeText, setChallengeText] = React.useState<string>("");
   const onDeleteChallenge = (id: number) => {
-    setChallenges(challenges.filter((challenge, i) => challenge.id !== id));
+    dispatch(removeItem(id));
   };
   return (
     <SafeAreaView>
@@ -51,12 +59,13 @@ const ChallengesScreen = () => {
       />
       <StyledButton
         onPress={() => {
-          console.log(challenges);
-
-          setChallenges([
-            ...challenges,
-            { id: Math.random(), title: challengeText, completed: false },
-          ]);
+          dispatch(
+            addItem({
+              id: Math.random(),
+              title: challengeText,
+              completed: false,
+            })
+          );
           setChallengeText("");
         }}
       >
@@ -69,6 +78,9 @@ const ChallengesScreen = () => {
             challenge={challenge}
             onDelete={onDeleteChallenge}
             key={challenge.id}
+            setCompleted={() => {
+              dispatch(toggleItem(challenge));
+            }}
           />
         ))}
       </ScrollView>
