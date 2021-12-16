@@ -16,6 +16,7 @@ import AboutScreen from "./presentation/AboutScreen";
 import ChallengesScreen from "./presentation/ChallengesScreen";
 import { Provider } from "react-redux";
 import { store } from "./application/redux/store";
+import ProfileScreen from "./presentation/ProfileScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const fontConfig = {
@@ -106,6 +107,11 @@ export default function App() {
                 name="Challenges"
                 component={ChallengesScreen}
                 options={{ title: "Challenges", headerShown: false }}
+              />
+              <Stack.Screen
+                name="Profile"
+                component={ProfileScreen}
+                options={{ title: "Profile", headerShown: false }}
               />
             </Stack.Navigator>
           </NavigationContainer>

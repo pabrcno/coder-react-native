@@ -63,12 +63,11 @@ const StartScreen = () => {
           height: dimensions.height,
         }}
       >
-        <StyledLogoContainer>
-          <StyledLogo
-            source={require("../../assets/logo.png")}
-            style={{ height: imageHeight, width: imageWidth }}
-          />
-        </StyledLogoContainer>
+        <StyledLogo
+          source={require("../../assets/logo.png")}
+          style={{ height: imageHeight, width: imageWidth }}
+        />
+
         <View>
           <StyledButton
             onPress={() => {
@@ -78,7 +77,11 @@ const StartScreen = () => {
           >
             <Text style={style.text}>PLAY!</Text>
           </StyledButton>
-          <StyledButton onPress={() => {}}>
+          <StyledButton
+            onPress={() => {
+              navigation.navigate("Profile");
+            }}
+          >
             <Text style={style.text}>PROFILE</Text>
           </StyledButton>
           <StyledButton

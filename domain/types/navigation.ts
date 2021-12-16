@@ -3,5 +3,6 @@ type RootStackParamList = {
   Game: undefined;
   About: undefined;
   Challenges: undefined;
+  Profile: undefined;
 };
 export default RootStackParamList;
