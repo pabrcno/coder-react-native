@@ -23,6 +23,7 @@
     "expo-font": "^10.0.3",
     "expo-image-picker": "~11.0.3",
     "expo-status-bar": "~1.1.0",
+    "firebase": "^9.6.1",
     "immer": "^9.0.7",
     "moment": "^2.29.1",
     "react": "^17.0.2",

@@ -12,7 +12,6 @@ const StyledTitle = styled.Text`
   font-family: "VCR";
   font-size: 22px;
   margin-left: 5px;
-
   color: #202020;
 `;
 const StyledText = styled.Text`
