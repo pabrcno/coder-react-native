@@ -4,9 +4,9 @@ import { ScrollView, View, Text, Dimensions } from "react-native";
 import styled from "styled-components/native";
 import { Row } from "react-native-easy-grid";
 import Cell from "../Cell";
-import generateEmptyGrid from "../../utils/generateEmptyGrid";
+import generateEmptyGrid from "../../../../application/GameLogic/generateEmptyGrid";
 import { ActionsRow } from "./../ActionsRow/ActionsRow";
-import gameLogic from "../../utils/gameLogic";
+import gameLogic from "../../../../application/GameLogic/gameLogic";
 
 const StyledGrid = styled.View`
   flex: 1;
