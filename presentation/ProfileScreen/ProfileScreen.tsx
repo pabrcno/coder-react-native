@@ -5,6 +5,7 @@ import { Appbar } from "react-native-paper";
 import RootStackParamList from "../../domain/types/navigation";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
+import ProfileForm from "./components/ProfileForm";
 
 type profileScreenProp = StackNavigationProp<RootStackParamList, "Profile">;
 
@@ -18,6 +19,7 @@ const ProfileScreen = () => {
         <Appbar.Content title="Your Profile!" />
       </Appbar.Header>
       <ImagePicker />
+      <ProfileForm />
     </>
   );
 };
