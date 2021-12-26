@@ -1,13 +1,21 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore/lite";
+import {
+  apiKey,
+  authDomain,
+  projectId,
+  storageBucket,
+  messagingSenderId,
+  appId,
+} from "@env";
 
 const firebaseConfig = {
-  apiKey: "put your api key here :D",
-  authDomain: "auth Domain",
-  projectId: "projectId",
-  storageBucket: "storge bucket",
-  messagingSenderId: "ANd yoUr Messaging SEnder herE",
-  appId: "and your appID hereee",
+  apiKey,
+  authDomain,
+  projectId,
+  storageBucket,
+  messagingSenderId,
+  appId,
 };
 
 // Initialize Firebase

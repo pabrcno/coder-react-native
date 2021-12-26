@@ -16,6 +16,11 @@ export const challengesSlice = createSlice({
   reducers: {
     addItem: (state, action: PayloadAction<ChallengeType>) => {
       const { id, title, completed } = action.payload;
+      //add to sqlite db
+      
+
+
+
       state.challenges.push({ id, title, completed });
     },
     removeItem: (state, action: PayloadAction<number>) => {
