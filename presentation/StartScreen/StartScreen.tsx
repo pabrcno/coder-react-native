@@ -75,13 +75,6 @@ const StartScreen = () => {
               navigation.navigate("Game");
             }}
           >
-            <Text style={style.text}>PLAY!</Text>
-          </StyledButton>
-          <StyledButton
-            onPress={() => {
-              navigation.navigate("Profile");
-            }}
-          >
             <Text style={style.text}>PROFILE</Text>
           </StyledButton>
           <StyledButton
