@@ -41,7 +41,7 @@
 
 This diagram shows how the data flows through the app and how it manages inputs from external entities.
 
-<img src="./readme_assets/DDD-architecture.png" height=600/>
+<img src="https://github.com/pabrcno/mock_series/blob/main/readme_assets/DDD-architecture.png" height=600/>
 
 ### Built With
 
